@@ -8,8 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ktpscanner/ui/constant/constant.dart';
 import 'package:nik_validator/nik_validator.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
-
 
 class ScannerProvider extends ChangeNotifier {
   ///=========================
@@ -131,15 +129,9 @@ class ScannerProvider extends ChangeNotifier {
     if (_nik != null && _nik!.isNotEmpty) {
       String? text = "";
       for (var _item in _nik!) {
-        // text = text! + "${_item?.nik}\n";
-        //  text +=
-            // "NIK: ${item['nik']}\nKode Unik: ${item['uniqueCode']}\nJenis Kelamin: ${item['gender']}\nUsia: ${item['age']}\nUlang Tahun: ${item['nextBirthday']}\nProvinsi: ${item['province']}\nKabupaten/Kota: ${item['city']}\nKecamatan: ${item['subdistrict']}\nKode Pos: ${item['postalCode']}\n\n";
-
-         text = text! + "${_item?.nik}\nKode Unik: ${_item?.uniqueCode}\nJenis Kelamin: ${_item?.gender}\nUsia: ${_item?.age}\nUlang Tahun: ${_item?.nextBirthday}";
+        text = text! + "${_item?.nik}\n";
       }
-    // Salin teks ke clipboard
-    Clipboard.setData(ClipboardData(text: text));
-    
+
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
